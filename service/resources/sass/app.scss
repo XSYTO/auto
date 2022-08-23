@@ -6,3 +6,19 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
+.countOrders {
+    color: red;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+.pulse {
+    animation: pulse 1s infinite ease-in-out alternate;
+  }
+  @keyframes pulse {
+    from { transform: scale(0.8); }
+    to { transform: scale(1.2); }
+  }

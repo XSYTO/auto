@@ -31,15 +31,15 @@ class MechanicController extends Controller
     {
         
 
-        $faker = Faker::create('lt_LT');
+        $faker = Faker::create();
+        $faker->addProvider(new \FakerRestaurant\Provider\en_US\Restaurant($faker));
         $autoservices = Autoservice::all();
 
-        $name = $faker->firstNameMale;
-        $surname = $faker->lastnameMale;
-        $images = 'https://joeschmoe.io/api/v1/male/random';
+        $name = $faker->foodName;
+        $images = "https://foodish-api.herokuapp.com/images/samosa/samosa22.jpg";
 
         
-        return view('workers.create', ['autoservices' => $autoservices])->with('name', $name)->with('surname' , $surname)->with('images' , $images);
+        return view('workers.create', ['autoservices' => $autoservices])->with('name', $name)->with('images' , $images);
     }
 
     /**
@@ -55,6 +55,7 @@ class MechanicController extends Controller
             'surname' => 'required|string|max:100',
         ]);
         
+        $request->file('images');
 
         $mechanic = new Mechanic;
         $mechanic->name = $request->get('name');
@@ -85,7 +86,7 @@ class MechanicController extends Controller
      */
     public function edit(Mechanic $mechanic)
     {
-        //
+        return view('workers.edit' , ['mechanic' => $mechanic]);
     }
 
     /**
@@ -97,7 +98,7 @@ class MechanicController extends Controller
      */
     public function update(Request $request, Mechanic $mechanic)
     {
-        //
+        
     }
 
     /**

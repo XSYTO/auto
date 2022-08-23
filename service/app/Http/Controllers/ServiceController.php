@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\Autoservice;
 use Illuminate\Http\Request;
 
 
@@ -15,7 +16,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services = Service::all();
+
+        return view('/services/index' , ['services' => $services]);
     }
 
     /**
@@ -25,7 +28,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        $autoservices = Autoservice::all();
+
+        return view('/services/create',['autoservices' => $autoservices]);
     }
 
     /**
@@ -36,7 +41,16 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service = new Service;
+        $service->name = $request->get('name');
+        $service->duration = $request->get('duration');
+        $service->price = $request->get('price');
+        $service->autoservice_id = $request->get('autoservice_id');
+
+        
+        $service->save();
+        return redirect()->route('service_index');    
+
     }
 
     /**

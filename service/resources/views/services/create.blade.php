@@ -8,10 +8,9 @@
                 <div class="card-header">PAVADINIMAS</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{route('mechanic_store')}}" enctype="multipart/form-data" >
-                        Dish Name: <input type="text" name="name" value="{{$name}}">
-                        About Dish: <input type="text" name="about">
-                        Photo: <input type="file" name="images" value="{{$images}}">
+                    <form method="POST" action="{{route('service_store')}}">
+                        Name: <input type="text" name="name">
+                        Price: <input type="text" name="price">
                         <select name="autoservice_id">
                             @foreach ($autoservices as $autoservice)
                             <option value="{{$autoservice->id}}">{{$autoservice->name}}</option>

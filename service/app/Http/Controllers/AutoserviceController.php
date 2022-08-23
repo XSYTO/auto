@@ -82,8 +82,8 @@ class AutoserviceController extends Controller
      */
     public function edit(Autoservice $autoservice)
     {
-        if(Auth::user()->role > 4) {return view('/autoservices/edit', ['autoservice' => $autoservice]);}
-            // return view('/services/edit', ['service' => $service]);
+
+        return view('autoservices.edit', ['autoservice' => $autoservice]);
         
     }
 
